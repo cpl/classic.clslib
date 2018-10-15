@@ -15,10 +15,10 @@
 */
 
 
-/* conv.h - Type conversion
+/* varg.h - Variable arguments
 
-Convert primitive types to strings and back. This library depends on string
-buffers being passed as routine arguments.
+Allows for parsing and using `...` in function definitions and calls with
+a variable number of arguments.
 
 */
 
@@ -26,11 +26,14 @@ buffers being passed as routine arguments.
 #include "types.h"
 
 
-#ifndef _INC_CONV_H
-#define _INC_CONV_H
+#ifndef _INC_VARG_H
+#define _INC_VARG_H
 
-extern void conv_hex_str(void* bufr, u32 value);
-extern void conv_u32_str(void* bufr, u32 value);
-extern void conv_s32_str(void* bufr, s32 value);
+typedef u32* va_list;
+
+#define VA_STA(vl, f) (vl = (va_list)&f)
+#define VA_ARG(vl, t) (*(t*)vl++)
+#define VA_END(vl)    (vl = NULL)
+#define VA_SKI(vl, n) (vl+=n)
 
 #endif
