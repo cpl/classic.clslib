@@ -17,9 +17,7 @@
 
 #include "types.h"
 #include "mm.h"
-#include "vfb.h"
-#include "memutils.h"
-#include "asm.h"
+#include "memutil.h"
 
 
 static mem_block*   _KERNEL_ALOC = (void*)0x000FFFFF;
@@ -112,13 +110,6 @@ void* cls_knl_malloc(u32 size) {
             // NOT SURE I CARE ENOUGH FOR THIS CASE, OVERHEAD FOR FINDING FREE
             // MEMORY AND ALLOCATING IT THEN SETTING THE PROPER STATUS OF THE
             // BLOCKS IS TOO LARGE - TBD IF WORTHWHILE
-
-            // else while next blocks are free, calculate total free size
-            // and allocate a single block, setting the other as dead/free
-            // } else {
-            //     vfb_println("ERR (fsize else)");
-            //     return NULL;
-            // }
         }
 
         // walk to next block
@@ -127,7 +118,6 @@ void* cls_knl_malloc(u32 size) {
 
     // reached end
     if (current != _KERNEL_ALOC_TAIL) {
-        vfb_println("SEGFAULT: none maching end");
         return NULL;
     }
 
@@ -180,7 +170,6 @@ void* cls_knl_calloc(u32 size) {
 
     // avoid memzero wrong region
     if (block == NULL) {
-        vfb_println("SEGFAULT: failed malloc for calloc");
         return NULL;
     }
 
@@ -202,7 +191,6 @@ void cls_knl_free(void* addr) {
 
         // if end is reached, SEGFAULT
         if (current == NULL) {
-            vfb_println("SEGFAULT: no such pointer found");
             return;
         }
     }

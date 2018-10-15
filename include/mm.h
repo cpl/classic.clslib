@@ -25,15 +25,16 @@ Define the types, functions, macros and pointers used by the memory allocator.
 #include "types.h"
 
 
-#define _MIN_ALOC_SIZE 16*4
+#ifndef _INC_MM_H
+#define _INC_MM_H
 
+#define _MIN_ALOC_SIZE 16*4
 
 typedef struct mem_block {
     u32                 size;
     void*               addr;
     struct mem_block*   next;
 } mem_block;
-
 
 #define     mem_block_free(b) ((b -> addr) = (void*)((u32)(b -> addr) | 1))
 #define     mem_block_dead(b) ((b -> addr) = NULL)
@@ -43,12 +44,12 @@ typedef struct mem_block {
 #define     mem_block_isdead(b) ((b -> addr) == NULL)
 #define     mem_block_islast(b) (b == _KERNEL_ALOC_LAST)
 
-
 extern void*        _KERNEL_HEAP;
-
 
 void  cls_knl_heap_init(void);
 void* cls_knl_malloc(u32 size);
 void  cls_knl_free(void* addr);
 void* cls_knl_falloc(u32 size);
 void* cls_knl_calloc(u32 size);
+
+#endif

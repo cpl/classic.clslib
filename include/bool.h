@@ -23,7 +23,12 @@ which are 1 and 0.
 */
 
 
+#ifndef _INC_BOOL_H
+#define _INC_BOOL_H
+
 typedef unsigned char bool;
 
 static const bool TRUE = (0==0);
 static const bool FALSE = !TRUE;
+
+#endif

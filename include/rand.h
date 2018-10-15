@@ -15,23 +15,21 @@
 */
 
 
-/* string.h - String support
+/* rand.h - Random number generation
 
-Support functions to work with `char*` also known as strings.
+Random number generation function definiton standards.
 
 */
 
 
 #include "types.h"
-#include "bool.h"
 
 
-#ifndef _INC_STRING_H
-#define _INC_STRING_H
+#ifndef _INC_RAND_H
+#define _INC_RAND_H
 
-extern void strcpy(char* src, char* dst);
-extern u32  strlen(char* str);
-extern bool strcmp(char* str, char* _str);
-extern u32  strchr(char* str,  char c);
+extern void rand_init(u32 value);
+extern u32  rand();
+extern u32  rand_range(u32 min, u32 max);
 
 #endif

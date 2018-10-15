@@ -15,23 +15,19 @@
 */
 
 
-/* string.h - String support
+/* math.h - Mathematical functions and operations
 
-Support functions to work with `char*` also known as strings.
+Set of functions to compute common mathematical operations and tranformations.
 
 */
 
 
 #include "types.h"
-#include "bool.h"
 
 
-#ifndef _INC_STRING_H
-#define _INC_STRING_H
+#ifndef _INC_MATH_H
+#define _INC_MATH_H
 
-extern void strcpy(char* src, char* dst);
-extern u32  strlen(char* str);
-extern bool strcmp(char* str, char* _str);
-extern u32  strchr(char* str,  char c);
+extern u32 math_div(u32, u32);
 
 #endif

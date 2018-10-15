@@ -26,6 +26,9 @@ may not be avaiable in standard C.
 #include "types.h"
 
 
+#ifndef _INC_TYPES_H
+#define _INC_TYPES_H
+
 extern void PUT32 (u32 addr, u32 val);
 extern void PUT16 (u32 addr, u16 val);
 extern void PUT08 (u32 addr, u8  val);
@@ -37,3 +40,5 @@ extern u8  GET08 (u32 addr);
 extern u32 GETPC (void);
 extern u32 GETSP (void);
 extern u32 GETLR (void);
+
+#endif

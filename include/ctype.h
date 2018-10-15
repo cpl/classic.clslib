@@ -26,6 +26,9 @@ defined in `types.h`. The return value can be FALSE or TRUE.
 #include "bool.h"
 
 
+#ifndef _INC_CTYPE_H
+#define _INC_CTYPE_H
+
 extern bool isalnum(char c);    // Check if char is alphanumeric
 extern bool isalpha(char c);    // Check if char is alphabetic
 extern bool isblank(char c);    // Check if char is blank
@@ -41,3 +44,5 @@ extern bool ishexad(char c);    // Check if char is hexadecimal digit
 
 extern char tolower(char c);    // Convert uppercase letter to lowercase
 extern char toupper(char c);    // Convert lowercase letter to uppercase
+
+#endif

@@ -15,23 +15,22 @@
 */
 
 
-/* string.h - String support
+/* print.h - Print to output
 
-Support functions to work with `char*` also known as strings.
+Definitions for printing functions.
 
 */
 
 
 #include "types.h"
-#include "bool.h"
 
 
-#ifndef _INC_STRING_H
-#define _INC_STRING_H
+#ifndef _INC_PRINT_H
+#define _INC_PRINT_H
 
-extern void strcpy(char* src, char* dst);
-extern u32  strlen(char* str);
-extern bool strcmp(char* str, char* _str);
-extern u32  strchr(char* str,  char c);
+extern void print(const char* str);
+extern void printf(const char* fmt, ...);
+extern void println(const char* str);
+extern void printdump(void* addr, u32 len);
 
 #endif

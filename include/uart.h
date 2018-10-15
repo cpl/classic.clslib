@@ -15,23 +15,24 @@
 */
 
 
-/* string.h - String support
+/* uart.h - mini UART (Universal asynchronous receiver/transmitter)
 
-Support functions to work with `char*` also known as strings.
+Function definitions for mini-UART interactions.
 
 */
 
 
 #include "types.h"
-#include "bool.h"
 
 
-#ifndef _INC_STRING_H
-#define _INC_STRING_H
+#ifndef _INC_UART_H
+#define _INC_UART_H
 
-extern void strcpy(char* src, char* dst);
-extern u32  strlen(char* str);
-extern bool strcmp(char* str, char* _str);
-extern u32  strchr(char* str,  char c);
+extern void uart_init(void);
+
+extern void uart_send(u8 byte);
+extern void uart_send_string(char* str);
+extern u8   uart_recv(void);
+extern void uart_clrf(void);
 
 #endif
