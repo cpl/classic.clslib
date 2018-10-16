@@ -28,7 +28,7 @@ which are 1 and 0.
 
 typedef unsigned char bool;
 
-static const bool TRUE = (0==0);
-static const bool FALSE = !TRUE;
+static const bool TRUE  = (0==0);
+static const bool FALSE = (0!=0);
 
 #endif
