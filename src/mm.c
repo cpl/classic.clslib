@@ -21,7 +21,7 @@
 #include "error.h"
 
 
-static mem_block*   _KERNEL_ALOC = (void*)0x000FFFFF;
+static mem_block*   _KERNEL_ALOC = (void*)0x009FFFFF;
 mem_block*          _KERNEL_ALOC_LAST;
 mem_block*          _KERNEL_ALOC_TAIL;
 
