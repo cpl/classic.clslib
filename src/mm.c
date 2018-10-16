@@ -18,6 +18,7 @@
 #include "types.h"
 #include "mm.h"
 #include "memutil.h"
+#include "error.h"
 
 
 static mem_block*   _KERNEL_ALOC = (void*)0x000FFFFF;
@@ -118,6 +119,7 @@ void* cls_knl_malloc(u32 size) {
 
     // reached end
     if (current != _KERNEL_ALOC_TAIL) {
+        _panic();
         return NULL;
     }
 
@@ -170,6 +172,7 @@ void* cls_knl_calloc(u32 size) {
 
     // avoid memzero wrong region
     if (block == NULL) {
+        _panic();
         return NULL;
     }
 
@@ -191,6 +194,7 @@ void cls_knl_free(void* addr) {
 
         // if end is reached, SEGFAULT
         if (current == NULL) {
+            _panic();
             return;
         }
     }
