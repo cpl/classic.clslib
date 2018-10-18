@@ -41,11 +41,14 @@ typedef struct ctx {
     u32 R9;
     u32 R10;
     u32 R11;
-    u32 FP;
+    u32 R12;
+    u32 SP;
     u32 LR;
     u32 PC;
 } ctx;
 
 extern void ctx_switch(ctx* save, ctx* load);
+extern void ctx_save(ctx* save);
+extern void ctx_load(ctx* load);
 
 #endif

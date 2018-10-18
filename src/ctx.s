@@ -24,3 +24,15 @@
 ctx_switch:
 	STMIA	R0, {R0-R15}
 	LDMDB	R1, {R0-R15}
+
+
+@ void ctx_save(ctx* save)
+.globl ctx_save
+ctx_save:
+	STMIA	R0, {R0-R15}
+	BX	LR
+
+@ void ctx_load(ctx* load)
+.globl ctx_load
+ctx_load:
+	LDMIA	R0, {R0-R15}
