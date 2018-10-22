@@ -47,8 +47,9 @@ typedef struct ctx {
     u32 PC;
 } ctx;
 
-extern void ctx_switch(ctx* save, ctx* load);
-extern void ctx_save(ctx* save);
-extern void ctx_load(ctx* load);
+
+extern void ctx_copy(ctx* from, ctx* to);
+extern void ctx_load(ctx* from);
+extern void ctx_user(ctx* from, ctx* to);
 
 #endif
