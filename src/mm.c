@@ -119,7 +119,8 @@ void* cls_knl_malloc(u32 size) {
 
     // reached end
     if (current != _KERNEL_ALOC_TAIL) {
-        _panic();
+        uart_send_string("PANIC malloc end != TAIL\n");
+        while(1);
         return NULL;
     }
 
@@ -172,7 +173,8 @@ void* cls_knl_calloc(u32 size) {
 
     // avoid memzero wrong region
     if (block == NULL) {
-        _panic();
+        uart_send_string("PANIC calloc zero NULL\n");
+        while(1);
         return NULL;
     }
 
@@ -194,7 +196,8 @@ void cls_knl_free(void* addr) {
 
         // if end is reached, SEGFAULT
         if (current == NULL) {
-            _panic();
+            uart_send_string("PANIC free invalid PTR\n");
+            while(1);
             return;
         }
     }
