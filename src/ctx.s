@@ -18,14 +18,50 @@
 .section .text
 
 
+@ void ctx_load(ctx* from)
+@ .globl ctx_load
+@ ctx_load:
+@ 	LDR	R1, [R0, #0x40]
+@ 	MSR	SPSR, R1
+@ 	LDMIA	R0, {R0-R14}
+
+
 @ void ctx_copy(ctx* from, ctx* to)
 .globl ctx_copy
 ctx_copy:
-	LDMIA	R0!, {R2-R12}		@ Load R0-R10  in R2-R12
-	STMIA	R1!, {R2-R12}		@ Save R2-R12  as R0-R10
-	LDMIA	R0,  {R2-R6}		@ Load R11-R15 in R2-R6
-	STMIA	R1,  {R2-R6}		@ Save R2-R6   as R11-R15
-	BX	LR
+	PUSH	{R0, R1}
+
+	LDMIA	R0!, {R2-R12}				@ Copy one context
+	STMIA	R1!, {R2-R12}				@ to another
+	LDMIA	R0,  {R2-R7 }				@
+	STMIA	R1,  {R2-R7 }				@
+
+	POP	{R0, R1}				@
+	BX	LR					@ Return
+
+
+@ void ctx_scpu(ctx* from, ctx* to)
+.globl ctx_scpu
+ctx_scpu:
+	PUSH	{R0-R3}
+	MRS	R3, CPSR				@ Save initial mode
+
+	MOV	R2, #(0b00011111|0b10000000|0b01000000)	@ Switch to SYS mode
+	MSR	CPSR_c, R2				@ disable interrupts
+
+	MOV	R2, SP					@ Get  USR SP
+	STR	R2, [R0, #0x34]				@ Save USR SP in CTX
+	MOV	R2, LR					@ Get  USR LR
+	STR	R2, [R0, #0x38]				@ Save USR LR in CTX
+
+	LDR	R2, [R1, #0x34]				@ Get CTX SP
+	MOV	SP, R2					@ Set USR SP
+	LDR	R2, [R1, #0x38]				@ Get CTX LR
+	MOV	LR, R2					@ Set USR LR
+
+	MSR	CPSR, R3				@ Restore initial mode
+	POP	{R0-R3}					@
+	BX	LR					@ Return
 
 
 @ void ctx_load(ctx* from)
@@ -33,24 +69,3 @@ ctx_copy:
 ctx_load:
 	LDMIA	R0, {R0-R15}
 
-
-@ void ctx_user(ctx* from, ctx* to)
-.globl ctx_user
-ctx_user:
-	MRS	R3, CPSR				@ Store proc mode
-
-	MOV	R2, #(0b00011111|0b10000000|0b01000000)	@ Switch to USR mode
-	MSR	CPSR_c, R2				@ disable IRQ and FIQ
-
-	MOV	R2, SP					@ Get SP from USR
-	STR	R2, [R0, #-8]				@ Set SP in task CTX
-	MOV	R2, LR					@ Get LR from USR
-	STR	R2, [R0, #-4]				@ Set LR in task CTX
-
-	LDR	R2, [R1, #-8]				@ Get SP from task CTX
-	MOV	SP, R2					@ Set SP in USR mode
-	LDR	R2, [R1, #-4]				@ Get LR from task CTX
-	MOV	LR, R2					@ Set LR in USR mode
-
-	MSR	CPSR_c, R3				@ Restore proc mode
-	BX	LR					@ Return

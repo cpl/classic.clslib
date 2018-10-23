@@ -33,6 +33,7 @@ typedef struct ctx {
     u32 R1;
     u32 R2;
     u32 R3;
+
     u32 R4;
     u32 R5;
     u32 R6;
@@ -42,14 +43,17 @@ typedef struct ctx {
     u32 R10;
     u32 R11;
     u32 R12;
+
     u32 SP;
     u32 LR;
     u32 PC;
+
+    u32 CPSR;
 } ctx;
 
 
 extern void ctx_copy(ctx* from, ctx* to);
+extern void ctx_scpu(ctx* from, ctx* to);
 extern void ctx_load(ctx* from);
-extern void ctx_user(ctx* from, ctx* to);
 
 #endif
