@@ -22,11 +22,10 @@ Set of functions to compute common mathematical operations and tranformations.
 */
 
 
-#include "types.h"
-
-
 #ifndef _INC_MATH_H
 #define _INC_MATH_H
+
+#include "types.h"
 
 extern u32 math_div(u32, u32);
 

@@ -22,11 +22,10 @@ Define the CPU context and operations to switch, store and restore it.
 */
 
 
-#include "types.h"
-
-
 #ifndef _INC_CTX_H
 #define _INC_CTX_H
+
+#include "types.h"
 
 typedef struct ctx {
     u32 R0;

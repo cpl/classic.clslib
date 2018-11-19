@@ -23,11 +23,10 @@ may not be avaiable in standard C.
 */
 
 
-#include "types.h"
-
-
 #ifndef _INC_ASM_H
 #define _INC_ASM_H
+
+#include "types.h"
 
 extern void PUT32 (u32 addr, u32 val);
 extern void PUT16 (u32 addr, u16 val);

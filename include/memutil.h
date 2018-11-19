@@ -23,11 +23,10 @@ many other libraries.
 */
 
 
-#include "types.h"
-
-
 #ifndef _INC_MEMUTIL_H
 #define _INC_MEMUTIL_H
+
+#include "types.h"
 
 extern void memzero(void* src, u32 len);
 extern void memcopy(void* src, u32 len, void* dst);

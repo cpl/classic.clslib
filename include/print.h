@@ -22,11 +22,12 @@ Definitions for printing functions.
 */
 
 
-#include "types.h"
 
 
 #ifndef _INC_PRINT_H
 #define _INC_PRINT_H
+
+#include "types.h"
 
 extern void print(const char* str);
 extern void printf(const char* fmt, ...);

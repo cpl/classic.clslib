@@ -37,6 +37,7 @@ $(LIBNAME): $(OBJECTS)
 	@rm -rf $(LIBNAME)
 	@echo "==== Generating lib: $@"
 	@$(COMPILER)-gcc-ar rc $(LIBNAME) $(OBJECTS)
+	@md5 $@
 
 # Generate - Objects - ASM
 $(BUILD)/%.o: $(SOURCE)/%.s
@@ -48,7 +49,7 @@ $(BUILD)/%.o: $(SOURCE)/%.s
 $(BUILD)/%.o: $(SOURCE)/%.c
 	@echo "==== Generating C   object: $@"
 	@mkdir -p $(@D)
-	$(COMPILER)-gcc $(CFLAGS) -I$(INCLD) $< -o $@
+	@$(COMPILER)-gcc $(CFLAGS) -I$(INCLD) $< -o $@
 
 clean:
 	@rm -rf $(BUILD)/*

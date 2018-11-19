@@ -22,11 +22,10 @@ Define the types, functions, macros and pointers used by the memory allocator.
 */
 
 
-#include "types.h"
-
-
 #ifndef _INC_MM_H
 #define _INC_MM_H
+
+#include "types.h"
 
 #define _MIN_ALOC_SIZE 16*4
 

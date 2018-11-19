@@ -22,11 +22,10 @@ Error handling & logging.
 */
 
 
-#include "uart.h"
-
-
 #ifndef _INC_ERROR_H
 #define _INC_ERROR_H
+
+#include "uart.h"
 
 void _panic(void);
 

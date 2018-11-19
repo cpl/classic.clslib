@@ -23,11 +23,10 @@ defined in `types.h`. The return value can be FALSE or TRUE.
 */
 
 
-#include "bool.h"
-
-
 #ifndef _INC_CTYPE_H
 #define _INC_CTYPE_H
+
+#include "bool.h"
 
 extern bool isalnum(char c);    // Check if char is alphanumeric
 extern bool isalpha(char c);    // Check if char is alphabetic

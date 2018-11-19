@@ -22,11 +22,12 @@ Random number generation function definiton standards.
 */
 
 
-#include "types.h"
 
 
 #ifndef _INC_RAND_H
 #define _INC_RAND_H
+
+#include "types.h"
 
 extern void rand_init(u32 value);
 extern u32  rand();

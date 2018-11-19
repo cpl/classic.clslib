@@ -23,11 +23,10 @@ a variable number of arguments.
 */
 
 
-#include "types.h"
-
-
 #ifndef _INC_VARG_H
 #define _INC_VARG_H
+
+#include "types.h"
 
 typedef u32* va_list;
 

@@ -22,11 +22,10 @@ Function definitions for mini-UART interactions.
 */
 
 
-#include "types.h"
-
-
 #ifndef _INC_UART_H
 #define _INC_UART_H
+
+#include "types.h"
 
 extern void uart_init(void);
 

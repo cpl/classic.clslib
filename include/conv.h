@@ -23,11 +23,10 @@ buffers being passed as routine arguments.
 */
 
 
-#include "types.h"
-
-
 #ifndef _INC_CONV_H
 #define _INC_CONV_H
+
+#include "types.h"
 
 extern void conv_hex_str(void* bufr, u32 value);
 extern void conv_u32_str(void* bufr, u32 value);

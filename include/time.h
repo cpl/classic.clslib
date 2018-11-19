@@ -22,11 +22,12 @@ Perform operations on the system clock.
 */
 
 
-#include "types.h"
 
 
 #ifndef _INC_TIME_H
 #define _INC_TIME_H
+
+#include "types.h"
 
 extern void wait(u32 ms);
 

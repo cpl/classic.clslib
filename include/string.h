@@ -22,12 +22,11 @@ Support functions to work with `char*` also known as strings.
 */
 
 
-#include "types.h"
-#include "bool.h"
-
-
 #ifndef _INC_STRING_H
 #define _INC_STRING_H
+
+#include "types.h"
+#include "bool.h"
 
 extern void strcpy(char* src, char* dst);
 extern u32  strlen(char* str);
