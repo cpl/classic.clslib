@@ -40,4 +40,7 @@ extern u32 GETPC (void);
 extern u32 GETSP (void);
 extern u32 GETLR (void);
 
+extern void CPUSH(u32 val);
+extern u32  CPOP();
+
 #endif

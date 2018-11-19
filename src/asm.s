@@ -15,64 +15,78 @@
 */
 
 
-@ PUT32 (R0)
+@ void PUT32(u32 addr, u32 val)
 .globl PUT32
 PUT32:
 	STR	R1, [R0]
 	BX	LR
 
 
-@ PUT16 (R0)
+@ void PUT16(u32 addr, u16 val)
 .globl PUT16
 PUT16:
 	STRH	R1, [R0]
 	BX	LR
 
 
-@ PUT08 (R0)
+@ void PUT08(u32 addr, u8 val)
 .globl PUT08
 PUT08:
 	STRB	R1, [R0]
 	BX	LR
 
 
-@ GET32 (R0) -> (R0)
+@ u32 GET32(u32 addr)
 .globl GET32
 GET32:
 	LDR	R0, [R0]
 	BX	LR
 
 
-@ GET16 (R0)-> (R0)
+@ u16 GET16(u32 addr)
 .globl GET16
 GET16:
 	LDRH	R0, [R0]
 	BX	LR
 
 
-@ GET08 (R0) -> (R0)
+@ u8 GET08(u32 addr)
 .globl GET08
 GET08:
 	LDRB	R0, [R0]
 	BX	LR
 
 
-@ GETPC -> (R0)
+@ u32 GETPC(void)
 .globl GETPC
 GETPC:
 	MOV	R0, PC
 	BX	LR
 
 
-@ GETSP -> (R0)
+@ u32 GETSP(void)
 .globl GETSP
 GETSP:
 	MOV	R0, SP
 	BX	LR
 
 
-@ GETLR -> (R0)
+@ u32 GETLR(void)
 .globl GETLR
 GETLR:
 	MOV	R0, LR
 	BX	LR
+
+
+@ void CPUSH(u32 val)
+.globl CPUSH
+CPUSH:
+	PUSH {R0}
+	BX LR
+
+
+@ u32 POP(void)
+.globl CPOP
+CPOP:
+	POP {R0}
+	BX LR
