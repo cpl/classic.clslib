@@ -25,6 +25,6 @@ Error handling & logging.
 #ifndef _INC_ERROR_H
 #define _INC_ERROR_H
 
-extern void _panic(const char* msg);
+extern void _panic(char* msg);
 
 #endif
