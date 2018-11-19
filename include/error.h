@@ -25,8 +25,6 @@ Error handling & logging.
 #ifndef _INC_ERROR_H
 #define _INC_ERROR_H
 
-#include "uart.h"
-
-void _panic(void);
+extern void _panic(const char* msg);
 
 #endif
