@@ -15,7 +15,7 @@
 */
 
 
-.section .usr.text
+.section .text.usr
 
 
 @ void PUT32(u32 addr, u32 val)

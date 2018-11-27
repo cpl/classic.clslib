@@ -15,7 +15,7 @@
 */
 
 
-.section .usr.rodata
+.section .rodata.usr
 
 
 _str_null:	.ascii "NULL\0"
