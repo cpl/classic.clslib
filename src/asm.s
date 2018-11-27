@@ -15,6 +15,9 @@
 */
 
 
+.section .usr.text
+
+
 @ void PUT32(u32 addr, u32 val)
 .globl PUT32
 PUT32:

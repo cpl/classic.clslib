@@ -15,7 +15,7 @@
 */
 
 
-.section .text
+.section .usr.text
 
 
 @ void memzero (void* src, u32 len)

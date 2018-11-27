@@ -15,7 +15,7 @@
 */
 
 
-.section .text
+.section .usr.text
 
 
 @ math_div (dividend, divisor) -> (quotient, remainder)
