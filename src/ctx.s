@@ -1,5 +1,5 @@
 /*
-   Copyright 2018 Alexandru-Paul Copil
+   Copyright 2018-2019 Alexandru-Paul Copil
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -18,26 +18,10 @@
 .section .text
 
 
-@ void ctx_load(ctx* from)
-@ .globl ctx_load
-@ ctx_load:
-@ 	LDR	R1, [R0, #0x40]
-@ 	MSR	SPSR, R1
-@ 	LDMIA	R0, {R0-R14}
-
-
-@ void ctx_copy(ctx* from, ctx* to)
-.globl ctx_copy
-ctx_copy:
-	PUSH	{R0, R1}
-
-	LDMIA	R0!, {R2-R12}				@ Copy one context
-	STMIA	R1!, {R2-R12}				@ to another
-	LDMIA	R0,  {R2-R7 }				@
-	STMIA	R1,  {R2-R7 }				@
-
-	POP	{R0, R1}				@
-	BX	LR					@ Return
+@ void ctx_set(ctx* from)
+.globl ctx_set
+ctx_set:
+	BX	LR
 
 
 @ void ctx_scpu(ctx* from, ctx* to)
@@ -62,10 +46,3 @@ ctx_scpu:
 	MSR	CPSR, R3				@ Restore initial mode
 	POP	{R0-R3}					@
 	BX	LR					@ Return
-
-
-@ void ctx_load(ctx* from)
-.globl ctx_load
-ctx_load:
-	LDMIA	R0, {R0-R15}
-

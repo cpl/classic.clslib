@@ -1,5 +1,5 @@
 /*
-   Copyright 2018 Alexandru-Paul Copil
+   Copyright 2018-2019 Alexandru-Paul Copil
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -15,23 +15,18 @@
 */
 
 
-/* uart.h - mini UART (Universal asynchronous receiver/transmitter)
-
-Function definitions for mini-UART interactions.
+/* malloc.h - Userland heap based memory allocator
 
 */
 
 
-#ifndef _INC_UART_H
-#define _INC_UART_H
+#ifndef _INC_MALLOC_H
+#define _INC_MALLOC_H
 
 #include "types.h"
 
-extern void uart_init(void);
-
-extern void uart_send(u8 byte);
-extern void uart_send_string(char* str);
-extern u8   uart_recv(void);
-extern void uart_clrf(void);
+void* malloc(u32 size);
+void* calloc(u32 size);
+void  free(void* addr);
 
 #endif

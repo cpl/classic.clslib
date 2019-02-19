@@ -15,22 +15,18 @@
 */
 
 
-/* io.h - Input/Output
+#include "malloc.h"
+#include "types.h"
 
-Input and output operations performed on buffers, streams and peripherals.
+
+/* Note
+
+Must implement a systemcall `malloc` that takes only u32 size and then calls
+an internal function to get the current task, then the heap location
 
 */
 
+void* malloc(u32 size) {}
+void* calloc(u32 size) {}
+void  free(void* addr) {}
 
-#ifndef _INC_IO_H
-#define _INC_IO_H
-
-// INPUT
-extern char getc();
-extern void gets(char* str);
-
-// OUTPUT
-extern void putc(char c);
-extern void puts(char* str);
-
-#endif
