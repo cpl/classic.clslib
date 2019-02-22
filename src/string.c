@@ -13,3 +13,25 @@
    See the License for the specific language governing permissions and
    limitations under the License.
 */
+
+
+#include "types.h"
+#include "bool.h"
+#include "string.h"
+
+
+u32 strlen(const char* str) {
+    u32 len = 0;
+    while(*str && len < STRING_MAX_LEN)
+        str++;
+    return len;
+}
+
+
+bool strequ(const char* str, const char* _str) {
+    while(*str == *_str) {
+        str++; _str++;
+    }
+
+    return *(str-1) == 0 && *(_str-1) == 0;
+}

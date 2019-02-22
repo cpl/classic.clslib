@@ -28,9 +28,11 @@ Support functions to work with `char*` also known as strings.
 #include "types.h"
 #include "bool.h"
 
-extern void strcpy(char* src, char* dst);
-extern u32  strlen(char* str);
-extern bool strcmp(char* str, char* _str);
-extern u32  strchr(char* str,  char c);
+#define STRING_MAX_LEN 65535
+
+void strcpy(char* src, char* dst);
+u32  strlen(const char* str);
+bool strequ(const char* str, const char* _str);
+u32  strchr(char* str,  char c);
 
 #endif

@@ -16,7 +16,7 @@
 COMPILER ?= arm-none-eabi
 
 # C FLAGS
-CFLAGS := -std=c99 -fpack-struct -fno-builtin -Wno-packed-bitfield-compat -fshort-wchar -Wall -c
+CFLAGS := -std=c99 -fpack-struct -fno-builtin -Wno-packed-bitfield-compat -fshort-wchar -Wall -c -nostdlib -nostartfiles -ffreestanding
 
 # Output name
 LIBNAME ?= libcls.a

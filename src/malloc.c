@@ -26,7 +26,7 @@ an internal function to get the current task, then the heap location
 
 */
 
-void* malloc(u32 size) {}
-void* calloc(u32 size) {}
-void  free(void* addr) {}
+void* malloc(u32 size);
+void* calloc(u32 size);
+void  free(void* addr);
 
