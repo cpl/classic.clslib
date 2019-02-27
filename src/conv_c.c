@@ -15,23 +15,16 @@
 */
 
 
-/* conv.h - Type conversion
-
-Convert primitive types to strings and back. This library depends on string
-buffers being passed as routine arguments.
-
-*/
-
-
-#ifndef _INC_CONV_H
-#define _INC_CONV_H
-
 #include "types.h"
+#include "conv.h"
 
-extern void conv_hex_str(void* bufr, u32 value);
-extern void conv_u32_str(void* bufr, u32 value);
-extern void conv_s32_str(void* bufr, s32 value);
 
-extern u32  conv_str_u32(const char* str);
+// convert string to unsigned 32 bit integer, not checking for overflow
+u32 conv_str_u32(const char* str) {
+    u32 ret = 0;
 
-#endif
+    while(*str)
+        ret = ret*10 + (*(str++)-'0');
+
+    return ret;
+}
