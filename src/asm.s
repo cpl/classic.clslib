@@ -84,12 +84,23 @@ GETLR:
 @ void CPUSH(u32 val)
 .globl CPUSH
 CPUSH:
-	PUSH {R0}
-	BX LR
+	PUSH	{R0}
+	BX	LR
 
 
 @ u32 POP(void)
 .globl CPOP
 CPOP:
-	POP {R0}
-	BX LR
+	POP	{R0}
+	BX	LR
+
+
+.globl GETCPSR
+GETCPSR:
+	MRS	R0, CPSR
+	BX	LR
+
+.globl GETSPSR
+GETSPSR:
+	MRS	R0, SPSR
+	BX	LR
