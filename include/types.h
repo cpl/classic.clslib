@@ -36,7 +36,7 @@ typedef unsigned long   u64;
 typedef signed char	    s8;
 typedef signed short	s16;
 typedef signed int	    s32;
-typedef signed long     u64;
+typedef signed long     s64;
 
 #define CAP(arr) ((u32)(sizeof(arr)/sizeof(arr[0])))
 #define LIM(t) (((unsigned long long)1 << (sizeof(t) * sizeof(u8)*8)) - 1)
