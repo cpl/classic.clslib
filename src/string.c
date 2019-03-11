@@ -27,8 +27,12 @@ u32 strlen(const char* str) {
     return len;
 }
 
+// read
+// write
 
 bool strequ(const char* str, const char* _str) {
+    if(*str != *_str) return FALSE;
+
     while(*str == *_str) {
         str++; _str++;
     }
